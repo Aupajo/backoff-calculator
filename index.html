@@ -100,7 +100,7 @@
       <thead>
         <tr>
           <th><em>i</em></th>
-          <th>Difference</th>
+          <th>Delay (sec)</th>
           <th>Elapsed Duration</th>
           <th>Example</th>
         </tr>
@@ -138,7 +138,7 @@
           var roundingFactor = Math.pow(10, rounding)
           var roundedValue = Math.round(value * roundingFactor) / roundingFactor
           var duration = moment.duration(value + prev, 's')
-          var example = startTime.add(duration).format('ddd DD MMM HH:mm:ss')
+          var example = startTime.add(value * 1000).format('ddd DD MMM HH:mm:ss')
           var elapsed = duration.format('d[d] h[h] m[m] s[s]')
           var row = document.createElement('tr')
 
@@ -151,7 +151,7 @@
 
           table.appendChild(row)
 
-          prev = value
+          prev += value
         }
       }
 
